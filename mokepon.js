@@ -114,9 +114,9 @@ function combate() {
         vidasJugador = vidasJugador -1
         spanvidasJugador.innerHTML = vidasJugador 
     }
-       
-        veredicto()
-     crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
+
+     crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal )
+    veredicto() 
 }
    
     function veredicto (){
