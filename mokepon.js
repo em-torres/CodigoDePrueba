@@ -126,7 +126,7 @@ function combate() {
     } else if (vidasJugador == 0){
         veredictoFinal="has perdido la batalla, retirada"
     }
-    mensaje(veredictoFinal)
+    crearMensaje(veredictoFinal)
 
 }
 
