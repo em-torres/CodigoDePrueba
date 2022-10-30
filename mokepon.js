@@ -11,13 +11,23 @@ function iniciarJuego() {
     let botonFuego = document.getElementById ('boton-fuego')
     let botonAgua = document.getElementById ('boton-agua')
     let botonTierra = document.getElementById ('boton-tierra')
+    let botonReiniciar = document.getElementById ('boton-reiniciar')
 
     botonPersonajeJugador.addEventListener('click', seleccionarPersonajeJugador)
     botonFuego.addEventListener('click', ataqueFuego)
     botonAgua.addEventListener('click', ataqueAgua)
     botonTierra.addEventListener('click', ataqueTierra)
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
+function reiniciarJuego () {
+    ataqueJugador = ''
+    ataqueOponente = ''
+    resultadoFinal = ''
 
+    vidasJugador = 3
+    vidasOponente = 3
+    veredictoFinal = ''
+}
 function seleccionarPersonajeJugador() {
     let inputsubzero = document.getElementById('subzero').checked
     let inputscorpion = document.getElementById('scorpion').checked
