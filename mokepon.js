@@ -119,8 +119,6 @@ function combate() {
      crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
 }
    
-}
-   
     function veredicto (){
     
     if (vidasOponente <= 0){
