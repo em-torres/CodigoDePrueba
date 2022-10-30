@@ -4,7 +4,7 @@ let resultadoFinal
 
 let vidasJugador = 3
 let vidasOponente = 3
-let veredictoFinal
+let veredictoFinal = ''
 
 function iniciarJuego() {
     let botonPersonajeJugador = document.getElementById('boton-personaje')
@@ -68,6 +68,9 @@ function ataqueTierra () {
 }
     
 function ataqueAleatorioOponente() {
+if (veredictoFinal != '') {
+        return
+    }
  ataqueOponente =  aleatorio(1,3)
 
     if (ataqueOponente == 1){
@@ -80,6 +83,7 @@ function ataqueAleatorioOponente() {
     
     combate()
     
+
 }
 
 
@@ -121,9 +125,9 @@ function combate() {
    
     function veredicto (){
     
-    if (vidasOponente == 0){
+    if (vidasOponente <= 0){
         veredictoFinal = "Has ganado la batalla !FELICITACIONES"
-    } else if (vidasJugador == 0){
+    } else if (vidasJugador <= 0){
         veredictoFinal="has perdido la batalla, retirada"
     }
     crearMensaje(veredictoFinal)
