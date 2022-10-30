@@ -54,21 +54,19 @@ function seleccionarPersonajeJugador() {
 function ataqueFuego () {
     ataqueJugador = 'Fuego'
     ataqueAleatorioOponente()
-    crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
 }
 function ataqueAgua () {
     ataqueJugador = 'Agua'
     ataqueAleatorioOponente()
-    crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
 }
 function ataqueTierra () {
     ataqueJugador = 'Tierra'
     ataqueAleatorioOponente()
-    crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
 }
-    
+
 function ataqueAleatorioOponente() {
 if (veredictoFinal != '') {
+        veredicto()
         return
     }
  ataqueOponente =  aleatorio(1,3)
@@ -115,11 +113,11 @@ function combate() {
        
         vidasJugador = vidasJugador -1
         spanvidasJugador.innerHTML = vidasJugador 
-       
-
     }
        
         veredicto()
+     crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal ) 
+}
    
 }
    
