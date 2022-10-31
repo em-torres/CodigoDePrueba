@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="mokepon.js"></script>
-    <meta charset="utf-8" />
-<title>mokepon</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="main.css">
+        <script src="mokepon.js"></script>
+        <meta charset="utf-8" />
+        <title>mokepon</title>
+    </head>
     <body>
-<h1>MOKEPON!🔥🌊🌱 </h1>
+        <div class="contenido">
+            <h1>MOKEPON!🔥🌊🌱 </h1>
 
-<section id="seleccionar-personaje">
-<h2>Seleccione su personaje:</h2>
+            <section id="seleccionar-personaje">
+                <h2>Selecciona tu Personaje:</h2>
+                <div>
+                    <label for="subzero">Subzero</label>
+                    <input type="radio" name="personajes" id="subzero">
 
-<label for="subzero">Subzero</label>
-<input type="radio" name="personajes" id="subzero">
+                    <label for="scorpion">Scorpion</label>    
+                    <input type="radio" name="personajes" id="scorpion">
 
-<label for="scorpion">Scorpion</label>    
-<input type="radio" name="personajes" id="scorpion">
+                    <label for="tremor">Tremor</label>
+                    <input type="radio" name="personajes" id="tremor">
+                </div>
+                <br>
+                <button id="boton-personaje">SELECCIONAR</button>
+            </section>
 
-<label for="tremor">Tremor</label>
-<input type="radio" name="personajes" id="tremor">
+            <section id="seleccionar-ataque">
+                <h2>Selecciona tu Ataque:</h2>
+                <p>
+                    Personaje <span id="personaje-jugador"></span>  tiene <span id="vida-jugador">3</span> vidas.
+                </p>
+                <p>
+                    Personaje <span id="personaje-oponente"></span>  tiene <span id="vida-oponente">3</span> vidas.
+                </p>
+                <div> 
+                    <button id="boton-fuego">FUEGO 🔥</button>
+                    <button id="boton-agua">AGUA 💧</button>
+                    <button id="boton-tierra">TIERRA 🌱</button>   
+                </div>
+            </section>
 
-<button id="boton-personaje" >Seleccionar</button>
+            <section id="mensajes"></section>
 
-</section>
-
-<section id="seleccionar-ataque">
-
-    <h2>Seleccione su ataque:</h2>
-    <p>Personaje <span id="personaje-jugador"></span>  tiene <span id="vida-jugador">3</span> vidas</p>
-    <p>Personaje <span id="personaje-oponente"></span>  tiene <span id="vida-oponente">3</span> vidas</p>
-    
-<p> 
-    <button id="boton-fuego" >Fuego🔥</button>
-    <button id="boton-agua">Agua 💧</button>
-    <button id="boton-tierra">Tierra 🌱</button>   
-</p>
-</section>
-<section id="mensajes">
-
-
-</section>
-<Section id="reiniciar">
-<button id="boton-reiniciar">Reiniciar</button>
-</Section>
-
-
-
+            <Section id="reiniciar">
+                <button id="boton-reiniciar">REINICIAR</button>
+            </Section>
+        </div>
     </body>
-
 </html>

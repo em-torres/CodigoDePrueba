@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    font-family: sans-serif, serif;
+}
+section {
+    margin-top: 1.5em;
+}
+h1, h2, p {
+    margin: 0 0 0.5em 0;
+}
+#seleccionar-ataque {
+    flex: auto;
+}
+#seleccionar-ataque div {
+    margin-top: 1em;
+}
+#seleccionar-ataque p {
+
+}
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+button {
+    padding: 1em;
+}

@@ -1,3 +1,17 @@
+let botonPersonajeJugador
+let botonFuego
+let botonAgua
+let botonTierra
+let botonReiniciar
+let spanPersonajeJugador
+let spanPersonajeOponente
+let inputsubzero
+let inputscorpion 
+let inputtremor
+let sectionMensajes
+let spanvidasJugador
+let spanvidasOponente
+
 let ataqueJugador
 let ataqueOponente
 let resultadoFinal 
@@ -7,11 +21,12 @@ let vidasOponente = 3
 let veredictoFinal = ''
 
 function iniciarJuego() {
-    let botonPersonajeJugador = document.getElementById('boton-personaje')
-    let botonFuego = document.getElementById ('boton-fuego')
-    let botonAgua = document.getElementById ('boton-agua')
-    let botonTierra = document.getElementById ('boton-tierra')
-    let botonReiniciar = document.getElementById ('boton-reiniciar')
+    botonPersonajeJugador = document.getElementById('boton-personaje')
+    botonFuego = document.getElementById ('boton-fuego')
+    botonAgua = document.getElementById ('boton-agua')
+    botonTierra = document.getElementById ('boton-tierra')
+    botonReiniciar = document.getElementById ('boton-reiniciar')
+    spanPersonajeJugador = document.getElementById ("personaje-jugador")
 
     botonPersonajeJugador.addEventListener('click', seleccionarPersonajeJugador)
     botonFuego.addEventListener('click', ataqueFuego)
@@ -19,6 +34,7 @@ function iniciarJuego() {
     botonTierra.addEventListener('click', ataqueTierra)
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
+
 function reiniciarJuego () {
     ataqueJugador = ''
     ataqueOponente = ''
@@ -26,13 +42,25 @@ function reiniciarJuego () {
 
     vidasJugador = 3
     vidasOponente = 3
+    spanvidasOponente.innerHTML = vidasOponente
+    spanvidasJugador.innerHTML = vidasJugador
+
     veredictoFinal = ''
+
+    spanPersonajeOponente.innerHTML = ""
+    spanPersonajeJugador.innerHTML = ""
+
+    inputsubzero.checked = false
+    inputscorpion.checked = false
+    inputtremor.checked = false
+
+    sectionMensajes.innerHTML = ""
 }
+
 function seleccionarPersonajeJugador() {
-    let inputsubzero = document.getElementById('subzero').checked
-    let inputscorpion = document.getElementById('scorpion').checked
-    let inputtremor = document.getElementById('tremor').checked
-    let spanPersonajeJugador = document.getElementById ("personaje-jugador")
+    inputsubzero = document.getElementById('subzero').checked
+    inputscorpion = document.getElementById('scorpion').checked
+    inputtremor = document.getElementById('tremor').checked
    
     if (inputsubzero == true){
         spanPersonajeJugador.innerHTML = "Subzero"
@@ -48,8 +76,8 @@ function seleccionarPersonajeJugador() {
 
     function seleccionarPersonajeOponte() {
         let personajeAleatorio = aleatorio(1,3)
-        let spanPersonajeOponente = document.getElementById("personaje-oponente")
-        
+        spanPersonajeOponente = document.getElementById("personaje-oponente")
+
         if (personajeAleatorio == 1 ) {
             spanPersonajeOponente.innerHTML = "Subzero"
         } else if (personajeAleatorio == 2){
@@ -59,7 +87,6 @@ function seleccionarPersonajeJugador() {
         }  
     }
 }
-
 
 function ataqueFuego () {
     ataqueJugador = 'Fuego'
@@ -75,12 +102,11 @@ function ataqueTierra () {
 }
 
 function ataqueAleatorioOponente() {
-if (veredictoFinal != '') {
+    if (veredictoFinal != '') {
         veredicto()
         return
     }
  ataqueOponente =  aleatorio(1,3)
-
     if (ataqueOponente == 1){
         ataqueOponente = 'Fuego'
     } else if (ataqueOponente == 2){
@@ -90,15 +116,12 @@ if (veredictoFinal != '') {
     }
     
     combate()
-    
-
 }
 
 
-
 function combate() {
-    let spanvidasJugador=document.getElementById ('vida-jugador')
-    let spanvidasOponente=document.getElementById ('vida-oponente')
+    spanvidasJugador=document.getElementById ('vida-jugador')
+    spanvidasOponente=document.getElementById ('vida-oponente')
     
         
         if (ataqueJugador == ataqueOponente ){
@@ -129,27 +152,26 @@ function combate() {
     veredicto() 
 }
    
-    function veredicto (){
-    
-    if (vidasOponente <= 0){
-        veredictoFinal = "Has ganado la batalla !FELICITACIONES"
-    } else if (vidasJugador <= 0){
-        veredictoFinal="has perdido la batalla, retirada"
+function veredicto (){
+    if (vidasOponente <= 0) {
+        veredictoFinal = "HAS GANADO LA BATALLA!! !!FELICITACIONES!!"
+    } else if (vidasJugador <= 0) {
+        veredictoFinal="HAS PERDIDO LA BATALLA!!! RETIRADA!!"
     }
     crearMensaje(veredictoFinal)
+}
+
+
+function crearMensaje (mensaje){
+    sectionMensajes = document.getElementById("mensajes")
+    let parrafo = document.createElement("p")
+
+    parrafo.innerHTML = mensaje
+    sectionMensajes.appendChild (parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
 
 }
 
-   
-	 function crearMensaje (mensaje){
-	    let SectionMensajes = document.getElementById("mensajes") 
-	    let parrafo = document.createElement("p")
-	    parrafo.innerHTML = mensaje
-	    SectionMensajes.appendChild (parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
-
-}
-
-    function aleatorio(min, max){
+function aleatorio(min, max) {
     return Math.floor(Math.random () * (max - min + 1) + min)
 }
 
