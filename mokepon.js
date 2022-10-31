@@ -122,33 +122,30 @@ function ataqueAleatorioOponente() {
 function combate() {
     spanvidasJugador=document.getElementById ('vida-jugador')
     spanvidasOponente=document.getElementById ('vida-oponente')
-    
         
-        if (ataqueJugador == ataqueOponente ){
-        resultadoFinal=("Empate 🤔")    
-      
+    if (ataqueJugador == ataqueOponente ){
+        resultadoFinal=("Empate 🤔")      
     } 
-        else if (ataqueJugador == "Tierra" && ataqueOponente == "Fuego"){
+    else if (ataqueJugador == "Tierra" && ataqueOponente == "Agua") {
         resultadoFinal = ("Has ganado 🎉")    
-        
         vidasOponente = vidasOponente -1     
         spanvidasOponente.innerHTML = vidasOponente
-
     } 
-        else if (ataqueJugador == "Fuego" && ataqueOponente == "Agua") {
+    else if (ataqueJugador == "Agua" && ataqueOponente == "Fuego") {
         resultadoFinal = ("Has ganado 🎉")                  
-    
         vidasOponente = vidasOponente -1   
         spanvidasOponente.innerHTML = vidasOponente
-
+    } else if (ataqueJugador == "Fuego" && ataqueOponente == "Tierra") {
+        resultadoFinal = ("Has ganado 🎉")                  
+        vidasOponente = vidasOponente -1   
+        spanvidasOponente.innerHTML = vidasOponente
     } else {
         resultadoFinal = ("Has perdido 💀")
-       
         vidasJugador = vidasJugador -1
         spanvidasJugador.innerHTML = vidasJugador 
     }
 
-     crearMensaje("Tu personaje ataco con " + ataqueJugador + " , el contrincante ataco con " + ataqueOponente + ". "  + resultadoFinal )
+    crearMensaje("Tu personaje atacó con " + ataqueJugador + ", el contrincante atacó con " + ataqueOponente + ". "  + resultadoFinal )
     veredicto() 
 }
    
@@ -163,8 +160,8 @@ function veredicto (){
 
 
 function crearMensaje (mensaje){
-    sectionMensajes = document.getElementById("mensajes")
     let parrafo = document.createElement("p")
+    sectionMensajes = document.getElementById("mensajes")
 
     parrafo.innerHTML = mensaje
     sectionMensajes.appendChild (parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
