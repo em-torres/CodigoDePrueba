@@ -8,6 +8,9 @@ section {
 h1, h2, p {
     margin: 0 0 0.5em 0;
 }
+button {
+    padding: 1em;
+}
 #seleccionar-ataque {
     flex: auto;
 }
@@ -24,6 +27,15 @@ h1, h2, p {
     align-items: center;
     text-align: center;
 }
-button {
-    padding: 1em;
+.notice {
+    color: purple;
+    font-weight: 700;
+}
+.ganador {
+    color: green;
+    font-weight: 700;
+}
+.perdedor {
+    color: red;
+    font-weight: 700;
 }

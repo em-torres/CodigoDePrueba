@@ -3,22 +3,25 @@ let botonFuego
 let botonAgua
 let botonTierra
 let botonReiniciar
+
+let inputSubzero
+let inputScorpion 
+let inputTremor
+
+let sectionMensajes
+
+let spanVidasJugador
+let spanvidasOponente
 let spanPersonajeJugador
 let spanPersonajeOponente
-let inputsubzero
-let inputscorpion 
-let inputtremor
-let sectionMensajes
-let spanvidasJugador
-let spanvidasOponente
 
 let ataqueJugador
 let ataqueOponente
 let resultadoFinal 
 
-let vidasJugador = 3
-let vidasOponente = 3
-let veredictoFinal = ''
+let vidasJugador
+let vidasOponente
+let veredictoFinal
 
 function iniciarJuego() {
     botonPersonajeJugador = document.getElementById('boton-personaje')
@@ -27,78 +30,119 @@ function iniciarJuego() {
     botonTierra = document.getElementById ('boton-tierra')
     botonReiniciar = document.getElementById ('boton-reiniciar')
     spanPersonajeJugador = document.getElementById ("personaje-jugador")
+    spanPersonajeOponente = document.getElementById("personaje-oponente")
+    spanVidasJugador = document.getElementById ('vida-jugador')
+    spanvidasOponente = document.getElementById ('vida-oponente')
+    sectionMensajes = document.getElementById("mensajes")
+    inputSubzero  = document.getElementById('subzero')
+    inputScorpion = document.getElementById('scorpion')
+    inputTremor = document.getElementById('tremor')
 
     botonPersonajeJugador.addEventListener('click', seleccionarPersonajeJugador)
     botonFuego.addEventListener('click', ataqueFuego)
     botonAgua.addEventListener('click', ataqueAgua)
     botonTierra.addEventListener('click', ataqueTierra)
     botonReiniciar.addEventListener('click', reiniciarJuego)
-}
-
-function reiniciarJuego () {
-    ataqueJugador = ''
-    ataqueOponente = ''
-    resultadoFinal = ''
 
     vidasJugador = 3
     vidasOponente = 3
     spanvidasOponente.innerHTML = vidasOponente
-    spanvidasJugador.innerHTML = vidasJugador
+    spanVidasJugador.innerHTML = vidasJugador
 
+    ataqueJugador = ''
+    ataqueOponente = ''
+    resultadoFinal = ''
     veredictoFinal = ''
+    spanPersonajeOponente.innerHTML = ''
+    spanPersonajeJugador.innerHTML = ''
+    sectionMensajes.innerHTML = ''
 
-    spanPersonajeOponente.innerHTML = ""
-    spanPersonajeJugador.innerHTML = ""
+    inputSubzero.checked = false
+    inputScorpion.checked = false
+    inputTremor.checked = false
+    desbloquearTodosLosPersonajes()
+}
 
-    inputsubzero.checked = false
-    inputscorpion.checked = false
-    inputtremor.checked = false
+function reiniciarJuego () {
+    iniciarJuego();
+}
 
-    sectionMensajes.innerHTML = ""
+function personajeSeleccionado() {
+    if (spanPersonajeJugador.innerHTML != '') {
+        return true
+    }
+    crearMensaje("POR FAVOR, ESCOGE UN PERSONAJE", 'notice')
+    return false
+}
+
+function bloquearElemento(boton) {
+    boton.disabled = true
+}
+
+function desbloquearElemento(boton) {
+    boton.disabled = false
+}
+
+function bloquearTodosLosPersonajes() {
+    bloquearElemento(inputSubzero)
+    bloquearElemento(inputScorpion)
+    bloquearElemento(inputTremor)
+    bloquearElemento(botonPersonajeJugador)
+}
+
+function desbloquearTodosLosPersonajes() {
+    desbloquearElemento(inputSubzero)
+    desbloquearElemento(inputScorpion)
+    desbloquearElemento(inputTremor)
+    desbloquearElemento(botonPersonajeJugador)
 }
 
 function seleccionarPersonajeJugador() {
-    inputsubzero = document.getElementById('subzero').checked
-    inputscorpion = document.getElementById('scorpion').checked
-    inputtremor = document.getElementById('tremor').checked
-   
-    if (inputsubzero == true){
+    if (inputSubzero.checked == true) {
         spanPersonajeJugador.innerHTML = "Subzero"
-    } else if (inputscorpion == true) {
+        bloquearTodosLosPersonajes()
+    } else if (inputScorpion.checked == true) {
         spanPersonajeJugador.innerHTML = "Scorpion"
-    } else if (inputtremor == true) {
+        bloquearTodosLosPersonajes()
+    } else if (inputTremor.checked == true) {
         spanPersonajeJugador.innerHTML = "Tremor"
-    }else {
-        alert ("seleccione un personaje")
+        bloquearTodosLosPersonajes()
+    } else if (!personajeSeleccionado()) {
+        return
     }
     
-    seleccionarPersonajeOponte()
+    seleccionarPersonajeOponente()
+}
 
-    function seleccionarPersonajeOponte() {
-        let personajeAleatorio = aleatorio(1,3)
-        spanPersonajeOponente = document.getElementById("personaje-oponente")
+function seleccionarPersonajeOponente() {
+    let personajeAleatorio = aleatorio(1,3)
 
-        if (personajeAleatorio == 1 ) {
-            spanPersonajeOponente.innerHTML = "Subzero"
-        } else if (personajeAleatorio == 2){
-            spanPersonajeOponente.innerHTML = "Scorpion"
-        } else {
-            spanPersonajeOponente.innerHTML = "Tremor"
-        }  
+    if (personajeAleatorio == 1 ) {
+        spanPersonajeOponente.innerHTML = "Subzero"
+    } else if (personajeAleatorio == 2){
+        spanPersonajeOponente.innerHTML = "Scorpion"
+    } else {
+        spanPersonajeOponente.innerHTML = "Tremor"
     }
 }
 
 function ataqueFuego () {
-    ataqueJugador = 'Fuego'
-    ataqueAleatorioOponente()
+    if (personajeSeleccionado()) {
+        ataqueJugador = 'Fuego'
+        ataqueAleatorioOponente()
+    }
 }
 function ataqueAgua () {
-    ataqueJugador = 'Agua'
-    ataqueAleatorioOponente()
+    if (personajeSeleccionado()) {
+        ataqueJugador = 'Agua'
+        ataqueAleatorioOponente()
+    }
 }
 function ataqueTierra () {
-    ataqueJugador = 'Tierra'
-    ataqueAleatorioOponente()
+    if (personajeSeleccionado()) {
+        ataqueJugador = 'Tierra'
+        ataqueAleatorioOponente()
+    }
 }
 
 function ataqueAleatorioOponente() {
@@ -119,10 +163,7 @@ function ataqueAleatorioOponente() {
 }
 
 
-function combate() {
-    spanvidasJugador=document.getElementById ('vida-jugador')
-    spanvidasOponente=document.getElementById ('vida-oponente')
-        
+function combate() {        
     if (ataqueJugador == ataqueOponente ){
         resultadoFinal=("Empate 🤔")      
     } 
@@ -142,29 +183,33 @@ function combate() {
     } else {
         resultadoFinal = ("Has perdido 💀")
         vidasJugador = vidasJugador -1
-        spanvidasJugador.innerHTML = vidasJugador 
+        spanVidasJugador.innerHTML = vidasJugador 
     }
 
     crearMensaje("Tu personaje atacó con " + ataqueJugador + ", el contrincante atacó con " + ataqueOponente + ". "  + resultadoFinal )
     veredicto() 
 }
    
-function veredicto (){
+function veredicto () {
+    resultado = 'ganador'
     if (vidasOponente <= 0) {
         veredictoFinal = "HAS GANADO LA BATALLA!! !!FELICITACIONES!!"
     } else if (vidasJugador <= 0) {
         veredictoFinal="HAS PERDIDO LA BATALLA!!! RETIRADA!!"
+        resultado = 'perdedor'
     }
-    crearMensaje(veredictoFinal)
+    crearMensaje(veredictoFinal, resultado)
 }
 
 
-function crearMensaje (mensaje){
+function crearMensaje (mensaje, clase=null) {
     let parrafo = document.createElement("p")
-    sectionMensajes = document.getElementById("mensajes")
 
+    if (clase != null) {
+        parrafo.classList.add(clase)
+    }
     parrafo.innerHTML = mensaje
-    sectionMensajes.appendChild (parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
+    sectionMensajes.prepend(parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
 
 }
 
