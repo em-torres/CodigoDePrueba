@@ -63,24 +63,11 @@ function iniciarJuego() {
     desbloquearTodosLosPersonajes()
 }
 
-function reiniciarJuego () {
-    iniciarJuego();
-}
-
-function personajeSeleccionado() {
-    if (spanPersonajeJugador.innerHTML != '') {
-        return true
-    }
-    crearMensaje("POR FAVOR, ESCOGE UN PERSONAJE", 'notice')
-    return false
-}
-
-function bloquearElemento(boton) {
-    boton.disabled = true
-}
-
-function desbloquearElemento(boton) {
-    boton.disabled = false
+function desbloquearTodosLosPersonajes() {
+    desbloquearElemento(inputSubzero)
+    desbloquearElemento(inputScorpion)
+    desbloquearElemento(inputTremor)
+    desbloquearElemento(botonPersonajeJugador)
 }
 
 function bloquearTodosLosPersonajes() {
@@ -90,11 +77,16 @@ function bloquearTodosLosPersonajes() {
     bloquearElemento(botonPersonajeJugador)
 }
 
-function desbloquearTodosLosPersonajes() {
-    desbloquearElemento(inputSubzero)
-    desbloquearElemento(inputScorpion)
-    desbloquearElemento(inputTremor)
-    desbloquearElemento(botonPersonajeJugador)
+function bloquearElemento(elemento) {
+    elemento.disabled = true
+}
+
+function desbloquearElemento(elemento) {
+    elemento.disabled = false
+}
+
+function reiniciarJuego () {
+    iniciarJuego();
 }
 
 function seleccionarPersonajeJugador() {
@@ -112,6 +104,14 @@ function seleccionarPersonajeJugador() {
     }
     
     seleccionarPersonajeOponente()
+}
+
+function personajeSeleccionado() {
+    if (spanPersonajeJugador.innerHTML != '') {
+        return true
+    }
+    crearMensaje("POR FAVOR, ESCOGE UN PERSONAJE", 'notice')
+    return false
 }
 
 function seleccionarPersonajeOponente() {
@@ -162,7 +162,6 @@ function ataqueAleatorioOponente() {
     combate()
 }
 
-
 function combate() {        
     if (ataqueJugador == ataqueOponente ){
         resultadoFinal=("Empate 🤔")      
@@ -189,18 +188,6 @@ function combate() {
     crearMensaje("Tu personaje atacó con " + ataqueJugador + ", el contrincante atacó con " + ataqueOponente + ". "  + resultadoFinal )
     veredicto() 
 }
-   
-function veredicto () {
-    resultado = 'ganador'
-    if (vidasOponente <= 0) {
-        veredictoFinal = "HAS GANADO LA BATALLA!! !!FELICITACIONES!!"
-    } else if (vidasJugador <= 0) {
-        veredictoFinal="HAS PERDIDO LA BATALLA!!! RETIRADA!!"
-        resultado = 'perdedor'
-    }
-    crearMensaje(veredictoFinal, resultado)
-}
-
 
 function crearMensaje (mensaje, clase=null) {
     let parrafo = document.createElement("p")
@@ -211,6 +198,17 @@ function crearMensaje (mensaje, clase=null) {
     parrafo.innerHTML = mensaje
     sectionMensajes.prepend(parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
 
+}
+
+function veredicto () {
+    resultado = 'ganador'
+    if (vidasOponente <= 0) {
+        veredictoFinal = "HAS GANADO LA BATALLA!! !!FELICITACIONES!!"
+    } else if (vidasJugador <= 0) {
+        veredictoFinal="HAS PERDIDO LA BATALLA!!! RETIRADA!!"
+        resultado = 'perdedor'
+    }
+    crearMensaje(veredictoFinal, resultado)
 }
 
 function aleatorio(min, max) {
