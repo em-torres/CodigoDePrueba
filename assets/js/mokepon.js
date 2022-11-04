@@ -61,6 +61,7 @@ function iniciarJuego() {
     inputScorpion.checked = false
     inputTremor.checked = false
     desbloquearTodosLosPersonajes()
+    desbloquearTodosLosAtaques()
 }
 
 function desbloquearTodosLosPersonajes() {
@@ -75,6 +76,18 @@ function bloquearTodosLosPersonajes() {
     bloquearElemento(inputScorpion)
     bloquearElemento(inputTremor)
     bloquearElemento(botonPersonajeJugador)
+}
+
+function desbloquearTodosLosAtaques() {
+    desbloquearElemento(botonFuego)
+    desbloquearElemento(botonAgua)
+    desbloquearElemento(botonTierra)
+}
+
+function bloquearTodosLosAtaques() {
+    bloquearElemento(botonFuego)
+    bloquearElemento(botonAgua)
+    bloquearElemento(botonTierra)
 }
 
 function bloquearElemento(elemento) {
@@ -216,9 +229,11 @@ function veredicto () {
     resultado = 'ganador'
     if (vidasOponente <= 0) {
         veredictoFinal = "HAS GANADO LA BATALLA!! !!FELICITACIONES!!"
+        bloquearTodosLosAtaques()
     } else if (vidasJugador <= 0) {
         veredictoFinal="HAS PERDIDO LA BATALLA!!! RETIRADA!!"
         resultado = 'perdedor'
+        bloquearTodosLosAtaques()
     }
     crearMensaje(veredictoFinal, resultado)
 }
