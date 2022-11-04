@@ -206,11 +206,10 @@ function ataqueEmoji(ataque) {
     emoji = '🌱'
 
     if (ataque == 'Fuego') {
-        return '🔥'
+        emoji = '🔥'
     } else if (ataque == 'Agua') {
-        return '💧'
+        emoji = '💧'
     }
-
     return emoji
 }
 
