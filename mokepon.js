@@ -197,7 +197,7 @@ function ataqueEmoji(ataque) {
     } else if (ataque == 'Agua') {
         return '💧'
     }
-    
+
     return emoji
 }
 
@@ -208,7 +208,7 @@ function crearMensaje (mensaje, clase=null) {
         parrafo.classList.add(clase)
     }
     parrafo.innerHTML = mensaje
-    sectionMensajes.prepend(parrafo) //el APENDCHILD sirve para agregar algo creado en JS  dentro del HTMl
+    sectionMensajes.prepend(parrafo)
 
 }
 
@@ -226,6 +226,5 @@ function veredicto () {
 function aleatorio(min, max) {
     return Math.floor(Math.random () * (max - min + 1) + min)
 }
-
 
 window.addEventListener('load', iniciarJuego)

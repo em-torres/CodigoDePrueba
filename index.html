@@ -3,6 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
+        <script src="Clases/Sound.js"></script>
         <script src="mokepon.js"></script>
         <meta charset="utf-8" />
         <title>mokepon</title>
@@ -11,7 +12,7 @@
     </head>
     <body>
         <div class="contenido">
-            <h1>MOKEPON!🔥🌊🌱 </h1>
+            <h1 class="shake">MOKEPON!🔥🌊🌱 </h1>
 
             <section id="seleccionar-personaje">
                 <h2>Selecciona tu Personaje:</h2>
@@ -49,6 +50,10 @@
             <Section id="reiniciar">
                 <button id="boton-reiniciar">REINICIAR</button>
             </Section>
+
+            <section>
+                <embed src="assets/sounds/kombat.mp3" autostart="true" loop="true" hidden>
+            </section>
         </div>
     </body>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5676036200309860"
