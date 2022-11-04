@@ -185,8 +185,20 @@ function combate() {
         spanVidasJugador.innerHTML = vidasJugador 
     }
 
-    crearMensaje("Tu personaje atacó con " + ataqueJugador + ", el contrincante atacó con " + ataqueOponente + ". "  + resultadoFinal )
+    crearMensaje("Tu personaje atacó con " + ataqueEmoji(ataqueJugador) + ", el contrincante atacó con " + ataqueEmoji(ataqueOponente) + ". "  + resultadoFinal )
     veredicto() 
+}
+
+function ataqueEmoji(ataque) {
+    emoji = '🌱'
+
+    if (ataque == 'Fuego') {
+        return '🔥'
+    } else if (ataque == 'Agua') {
+        return '💧'
+    }
+    
+    return emoji
 }
 
 function crearMensaje (mensaje, clase=null) {
